@@ -1,0 +1,11 @@
+{% load i18n %}
+{% blocktrans with model=model %} New {{ model }} created successfully.{% endblocktrans %}
+
+
+{% comment %}
+{% if gender == "F" %}
+    Nueva {{ model }} creada satisfactoriamente.
+{% else %}
+    Nuevo {{ model }} creado satisfactoriamente.
+{% endif %}
+{% endcomment %}

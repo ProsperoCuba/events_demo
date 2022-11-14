@@ -1,0 +1,105 @@
+{% load static %}
+<script src="{% static 'rest_framework/js/coreapi-0.1.1.js' %}"></script>
+<script src="{% url 'api-docs:schema-js' %}"></script>
+
+<script src="{% static 'theme/plugins/global/plugins.bundle.js' %}" type="text/javascript"></script>
+<script src="{% static 'theme/js/scripts.bundle.js' %}" type="text/javascript"></script>
+{% comment %}
+<script src="{% static 'notifications/vendor/js/moment.min.js' %}" type="text/javascript"></script>
+<script src="{% static 'notifications/vendor/js/hyperapp.js' %}" type="text/javascript"></script>
+<script src="{% static 'notifications/vendor/js/moment-with-locales.min.js' %}" data-language="es" type="text/javascript"></script>
+{% endcomment %}
+<script>
+    var coreapi = window.coreapi  // Loaded by `coreapi.js`
+    var schema = window.schema    // Loaded by `schema.js`
+
+
+    const auth = new window.coreapi.auth.SessionAuthentication({
+      csrfCookieName: "csrftoken",
+      csrfHeaderName: "X-CSRFToken"
+    });
+
+    // init api request client with session authentication
+    client = new window.coreapi.Client({ auth: auth });
+    window.client = client;
+    window.api_client = client;
+
+    //const h = window.hyperapp.h;
+
+    window.moment.locale("{{ request.LANGUAGE_CODE }}")
+    moment.locale("{{ request.LANGUAGE_CODE }}")
+    var base_lng = "{{ request.LANGUAGE_CODE }}"
+</script>
+
+<script>
+    var KTAppOptions = {
+        "colors": {
+            "state": {
+                "brand": "#22b9ff",
+                "light": "#ffffff",
+                "dark": "#282a3c",
+                "primary": "#5867dd",
+                "success": "#34bfa3",
+                "info": "#36a3f7",
+                "warning": "#ffb822",
+                "danger": "#e72e29"
+            },
+            "base": {
+                "label": ["#c5cbe3", "#a1a8c3", "#3d4465", "#3e4466"],
+                "shape": ["#f0f3ff", "#d9dffa", "#afb4d4", "#646c9a"]
+            }
+        }
+    };
+</script>
+
+<script src="{% static 'js/csrf.js' %}" type="text/javascript"></script>
+
+<script>
+    $(".global_search").select2({'minimumResultsForSearch': -1, "dropdownAutoWidth": true})
+</script>
+
+<script src="{% static 'js/website-aside-navigation-panel.js' %}"></script>
+
+<script src="{% static 'js/global_functions.js' %}"></script>
+<script type="text/javascript">
+    $(document).ready(function () {
+        addProcessingListenerToForms();
+
+        // Unhover default trending submenu
+        $('.kt-menu__item--active.trending-submenu').on('mouseleave', function(e){ $(this).removeClass('kt-menu__item--active');});
+
+        // Menu dropdown handle hovers
+        $('.kt-menu__item--open-dropdown').on('mouseenter', function(e){
+            $('.kt-menu__item--open-dropdown .kt-menu__submenu').hide();
+            $(this).find('.kt-menu__submenu').show();
+            // If we try reuse subcategory mousenter listener javascript enter in a infinite cycle
+            let firstChild = $(this).find('.menu-category-container .menu-subcategory-item:first-child');
+            let right_content = $(firstChild).find(".menu-subcategory-leaves").html();
+            $(firstChild).closest(".menu-category-container").find("ul.kt-menu__inner.menu-subcategories").html(right_content);
+        });
+        $('.kt-menu__item--open-dropdown').on('mouseleave', function(e){ $(this).find('.kt-menu__submenu').hide();});
+        $('.kt-menu__item--open-dropdown .kt-menu__submenu').on('mouseleave', function(e){ $(this).hide();});
+        $('.menu-clean-submenu').on('mouseover', function(e){ $('.kt-menu__item--open-dropdown .kt-menu__submenu').hide();});
+
+        // Render dynamic subcategory child
+        $('.kt-menu__item .menu-subcategory-item').on('mouseenter',function(e){
+            let right_content = $(this).find(".menu-subcategory-leaves").html();
+            $(this).closest(".menu-category-container").find("ul.kt-menu__inner.menu-subcategories").html(right_content);
+        });
+         $('.feature_popover').on("mouseenter", function () {
+             $(this).popover({html: true, content: $(this).closest("div").find('.popover-content').html()});
+             $(this).popover('show');
+         });
+         $('.feature_popover').on("mouseleave", function () {
+             $(this).popover('hide');
+         });
+
+
+    });
+</script>
+
+
+<script src="{% static 'js/sweet_alert_mixin.js' %}" type="text/javascript"></script>
+<script src="{% static 'js/custom_action.js' %}" type="text/javascript"></script>
+<script src="{% static 'js/bulk_action.js' %}" type="text/javascript"></script>
+<script src="{% static 'js/clipboard.js' %}" type="text/javascript"></script>

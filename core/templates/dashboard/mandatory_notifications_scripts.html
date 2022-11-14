@@ -1,0 +1,21 @@
+{% load static compress %}
+
+<script src="{% static 'notifications/js/init.js' %}" type="text/javascript"></script>
+
+{# Start for Notifications #}
+{% if request.user.is_authenticated %}
+
+<script src="{% static 'notifications/js/ws_consumers.js' %}" type="text/javascript"></script>
+<script>
+    {#  //Helper to know if user has Notifications enabled from js #}
+    {% if request.user.notifications_config and request.user.notifications_config.allow_notifications %}
+        window.user_notifications_enabled = true
+    {% else %}
+        window.user_notifications_enabled = false
+    {% endif %}
+</script>
+<script src="{% static 'notifications/js/notifications.js' %}" type="text/javascript"></script>
+<script src="{% static 'notifications/js/notification_update_settings.js' %}" type="text/javascript"></script>
+
+{% endif %}
+{# End for Notifications #}

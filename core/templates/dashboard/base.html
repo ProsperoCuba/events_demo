@@ -1,0 +1,163 @@
+{% load i18n static tz %}
+{% get_current_language as LANGUAGE_CODE %}
+<!DOCTYPE html>
+<html lang="{{LANGUAGE_CODE|default:'es'}}">
+
+<!-- begin::Head -->
+<head>
+    <meta charset="utf-8" />
+    <link rel="shortcut icon" href="{% static 'favicon.ico' %}" />
+    <title>{{ current_site.name }} | {% block title %}{{ title }}{% endblock %}</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, shrink-to-fit=no">
+
+    <!--begin::Web font -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700|Roboto:300,400,500,600,700">
+
+    <!--end::Web font -->
+
+    <!-- start: Block Styles-->
+        {% block styles %}
+
+            {#        {% include 'frontend/dashboard/mandatory_styles.html' %}#}
+            {#        {% include 'frontend/dashboard/optional_styles.html' %}#}
+            {% include 'dashboard/mandatory_theme_styles.html' %}
+
+        {% endblock %}
+
+
+    {% block page_css %}{% endblock %}
+    <!-- end: Block Styles-->
+
+
+
+    {% block headersjs %}{% endblock %}
+
+
+    <link rel="shortcut icon" href="{% static 'img/favicon.ico' %}"/>
+
+</head>
+
+    <body class="
+    kt-quick-panel--right kt-offcanvas-panel--right kt-header--fixed kt-header-mobile--fixed kt-subheader--enabled
+    kt-subheader--transparent kt-aside--enabled
+    kt-aside--fixed kt-aside--minimize kt-page--loading
+">
+
+    <!-- begin:: Header Mobile -->
+    <div id="kt_header_mobile" class="kt-header-mobile  kt-header-mobile--fixed " style="background-color: #27293c;">
+        <div class="kt-header-mobile__logo">
+            <a href="{% url 'dashboard' %}">
+                <img style="width: 25px;" alt="Logo" src="{% static 'img/logo.png' %}"/>
+            </a>
+        </div>
+        <div class="kt-header-mobile__toolbar">
+            <button class="kt-header-mobile__toolbar-toggler kt-header-mobile__toolbar-toggler--left" id="kt_aside_mobile_toggler"><span></span></button>
+            <button class="kt-header-mobile__toolbar-toggler" id="kt_header_mobile_toggler"><span></span></button>
+            <button class="kt-header-mobile__toolbar-topbar-toggler" id="kt_header_mobile_topbar_toggler"><i class="flaticon-more"></i></button>
+        </div>
+    </div>
+
+    <!-- end:: Header Mobile -->
+
+
+    <!-- begin::BodyPage -->
+    <div class="kt-grid kt-grid--hor kt-grid--root">
+        <div class="kt-grid__item kt-grid__item--fluid kt-grid kt-grid--ver kt-page">
+            <!-- start: Block Left Aside -->
+            {% block left_aside %}
+                <!-- BEGIN: Left Aside -->
+                {% include "dashboard/left_aside.html" %}
+                <!-- END: Left Aside -->
+            {% endblock %}
+            <!-- end: Block Left Aside -->
+
+            <div class="kt-grid__item kt-grid__item--fluid kt-grid kt-grid--hor kt-wrapper" id="kt_wrapper">
+                <!-- start: Block SubHeader -->
+                {% block header %}
+                    <!-- BEGIN: header -->
+                    {% include "dashboard/header/header.html" %}
+                    <!-- END: header -->
+                {% endblock %}
+                <!-- end: Block SubHeader -->
+
+                <div class="kt-content  kt-grid__item kt-grid__item--fluid kt-grid kt-grid--hor" id="kt_content">
+
+
+                    <!-- start: Block SubHeader -->
+                    {% block subheader %}
+                        <!-- BEGIN: Subheader -->
+                        {% include "dashboard/subheader.html" %}
+                        <!-- END: Subheader -->
+                    {% endblock %}
+                    <!-- end: Block SubHeader -->
+
+                    <div class="kt-container  kt-container--fluid  kt-grid__item kt-grid__item--fluid">
+
+                        {% block messages %}
+                            <div class="kt-grid kt-grid--desktop kt-grid--ver kt-grid--ver-desktop kt-app">
+                                <div class="kt-grid__item kt-grid__item--fluid">
+                                    <div class="row">
+                                        <div class="col-md-12" style="word-break: break-word;">
+
+                                            {% block non_field_errros %}
+                                                {% include 'form_snippets/non_field_errors.html' %}
+
+                                            {% endblock %}
+
+                                            {% include 'dashboard/messages.html' %}
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        {% endblock %}
+
+                        <!-- start: Block Content -->
+                       {% block content %}
+                           Inner page content goes here
+                       {% endblock %}
+                       <!-- END: Block Content -->
+                    </div>
+
+                </div>
+
+                <!-- start: Block Footer-->
+                {% block footer %}
+                    <!-- begin::Footer -->
+                    {% include "dashboard/footer.html" %}
+                    <!-- end::Footer -->
+                {% endblock %}
+                <!-- end: Block Footer-->
+
+            </div>
+
+        </div>
+    </div>
+    <!-- begin::BodyPage -->
+    <!-- begin::Scrolltop -->
+    <div id="kt_scrolltop" class="kt-scrolltop">
+        <i class="fa fa-arrow-up"></i>
+    </div>
+    <!-- end::Scrolltop -->
+
+    <!-- start:: Block Scripts -->
+    {% block scripts %}
+        {% include 'dashboard/mandatory_theme_scripts.html' %}
+        {%  comment %}{% include "dashboard/mandatory_notifications_scripts.html" %}{% endcomment %}
+
+    {% endblock %}
+
+    {% block processing_form_submit %}
+        <script type="text/javascript">
+            $(document).ready(function () {
+                addProcessingListenerToForms();
+            });
+        </script>
+    {% endblock %}
+
+    {% block page_js %}{% endblock %}
+    <!-- end:: Block Scripts -->
+
+    </body>
+
+</html>

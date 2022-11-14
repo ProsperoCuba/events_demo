@@ -1,0 +1,12 @@
+<div class="kt-section kt-section--first">
+    <div class="kt-section__body">
+        <h3 class="kt-section__title kt-section__title-lg">
+            {% block section_title %}
+            {% endblock %}
+        </h3>
+        {% include 'form_snippets/separator.html' %}
+
+        {% block section_body %}
+        {% endblock %}
+    </div>
+</div>

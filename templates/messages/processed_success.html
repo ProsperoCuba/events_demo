@@ -1,0 +1,11 @@
+{% load i18n %}
+{% blocktrans with model=model %} All {{ model }} selected were processed successfully.{% endblocktrans %}
+
+
+{% comment %}
+{% if gender == "F" %}
+    Todas las {{ model }} seleccionadas fueron procesadas correctamente.
+{% else %}
+    Todos los {{ model }} seleccionados fueron procesados correctamente.
+{% endif %}
+{% endcomment %}

@@ -1,0 +1,82 @@
+{% load tz i18n static %}
+
+<!--Begin:: App Aside Mobile Toggle-->
+<button class="kt-app__aside-close" id="kt_portlet_aside_close">
+    <i class="la la-close"></i>
+</button>
+
+<!--End:: App Aside Mobile Toggle-->
+
+<div class="kt-grid__item kt-app__toggle kt-app__aside" id="kt_portlet_aside">
+
+    <!--begin:: Widgets/Applications/User/Profile1-->
+    <div class="kt-portlet ">
+        <div class="kt-portlet__head  kt-portlet__head--noborder">
+            <div class="kt-portlet__head-label">
+                <h3 class="kt-portlet__head-title">
+                    {% block portlet_aside_title %}
+                    
+                    {% endblock %}
+                </h3>
+            </div>
+
+
+            <div class="kt-portlet__head-toolbar">
+                {% block portlet_aside_toolbar %}
+
+                    <a href="#" class="btn btn-clean btn-sm btn-icon btn-icon-md" data-toggle="dropdown">
+                        <i class="flaticon-more-1"></i>
+                    </a>
+                    <div class="dropdown-menu dropdown-menu-right dropdown-menu-fit dropdown-menu-md">
+
+                        <!--begin::Nav-->
+                        <ul class="kt-nav">
+
+                            {% block portlet_aside_toolbar_links %}
+
+                            {% endblock %}
+
+
+                        </ul>
+
+                        <!--end::Nav-->
+                    </div>
+            {% endblock %}
+
+            </div>
+        </div>
+        <div class="kt-portlet__body kt-portlet__body--fit-y">
+
+            <!--begin::Widget -->
+            <div class="kt-widget kt-widget--user-profile-1">
+                <div class="kt-widget__head">
+
+                    {% block portlet_aside_head %}
+
+                    {% endblock %}
+
+                </div>
+                <div class="kt-widget__body">
+                    <div class="kt-widget__content">
+                        {% block portlet_aside_content %}
+                        
+                        {% endblock %}
+
+
+                    </div>
+                    <div class="kt-widget__items">
+                        {% block portlet_aside_menu_items %}
+
+                        {% endblock %}
+
+
+                    </div>
+                </div>
+            </div>
+
+            <!--end::Widget -->
+        </div>
+    </div>
+
+    <!--end:: Widgets/Applications/User/Profile1-->
+</div>

@@ -1,0 +1,122 @@
+{% load i18n static %}
+<div class="kt-portlet">
+    {% if form %}
+        <form id="kt_form" method="post" enctype="multipart/form-data" novalidate>{% csrf_token %}
+
+    {% endif %}
+
+
+
+    <div class="kt-portlet__body kt-portlet__body--fit">
+            <div class="kt-invoice-2">
+                <div class="kt-invoice__head">
+
+
+                    <div class="kt-invoice__container">
+
+                        {% block invoice_head %}
+
+                        {% endblock %}
+
+                        {% block invoice_header_items %}
+                            <div class="kt-invoice__items">
+
+
+                                <div class="kt-invoice__item">
+                                    <span class="kt-invoice__subtitle">DATA</span>
+                                    <span class="kt-invoice__text">Dec 12, 2017</span>
+                                </div>
+                                <div class="kt-invoice__item">
+                                    <span class="kt-invoice__subtitle">INVOICE NO.</span>
+                                    <span class="kt-invoice__text">GS 000014</span>
+                                </div>
+                                <div class="kt-invoice__item">
+                                    <span class="kt-invoice__subtitle">INVOICE TO.</span>
+                                    <span class="kt-invoice__text">Iris Watson, P.O. Box 283 8562 Fusce RD.<br>Fredrick Nebraska 20620</span>
+                                </div>
+
+
+                            </div>
+                        {% endblock %}
+                    </div>
+                </div>
+
+                {% block invoice_body %}
+                <div class="kt-invoice__body">
+
+                    <div class="kt-invoice__container">
+                        <div class="table-responsive">
+                            {% block invoice_table %}
+
+
+                            {% endblock %}
+
+                        </div>
+                    </div>
+                </div>
+                {% endblock %}
+
+                {% block invoice_footer %}
+
+                    <div class="kt-invoice__footer">
+                        {% block invoice_footer_body %}
+                            <div class="kt-invoice__container">
+
+
+                                {% block invoice_footer_table %}
+                                    <div class="table-responsive">
+                                        <table class="table">
+                                            <thead>
+                                            <tr>
+                                                <th>BANK</th>
+                                                <th>ACC.NO.</th>
+                                                <th>DUE DATE</th>
+                                                <th>TOTAL AMOUNT</th>
+                                            </tr>
+                                            </thead>
+                                            <tbody>
+                                            <tr>
+                                                <td>BARCLAYS UK</td>
+                                                <td>12345678909</td>
+                                                <td>Jan 07, 2018</td>
+                                                <td class="kt-font-danger kt-font-xl kt-font-boldest">20,600.00</td>
+                                            </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                {% endblock %}
+
+
+                            </div>
+                        {% endblock %}
+                    </div>
+                {% endblock %}
+
+                <div class="kt-invoice__actions kt-padding-20">
+
+                    {% block invoice_actions %}
+
+
+                        {% block invoice_action_btns %}
+                            <div class="col-xl-12 text-center">
+                                <button action="action" onclick="window.history.go(-1); return false;"
+                                        class="btn btn-clean kt-margin-r-10">
+                                    <i class="la la-arrow-left"></i>
+                                    <span class="kt-hidden-mobile">{% trans 'Back' %}</span>
+                                </button>
+                                <button type="button" class="btn btn-label-brand btn-bold" onclick="window.print();">Print
+                                    Invoice
+                                </button>
+                                <button type="sumbit" class="btn btn-brand btn-bold">Pay</button>
+                            </div>
+                        {% endblock %}
+
+                {% endblock %}
+
+                </div>
+            </div>
+        </div>
+{% if form %}
+    </form>
+{% endif %}
+</div>

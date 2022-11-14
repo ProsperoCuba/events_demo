@@ -1,0 +1,15 @@
+{% load static i18n tz %}
+<div class="kt-footer  kt-grid__item kt-grid kt-grid--desktop kt-grid--ver-desktop" id="kt_footer">
+    <div class="kt-container  kt-container--fluid ">
+        <div class="kt-footer__copyright" style="flex-wrap: wrap;">
+            {% now "Y" %}&nbsp; {{current_site.name}} {% trans 'developed by' %} &copy;&nbsp;<a href="javascript:;" target="_blank" class="kt-link kt-font-info">SUMAT</a>
+        </div>
+        {% comment %}
+        <div class="kt-footer__menu">
+            <a href="url 'about'" target="_blank" class="kt-footer__menu-link kt-link kt-font-info">{% trans 'Acerca de' %}</a>
+            <a href="url 'terms'" target="_blank" class="kt-footer__menu-link kt-link kt-font-info">{% trans 'Términos y Servicios' %}</a>
+            <a href="url 'contact_us'" target="_blank" class="kt-footer__menu-link kt-link kt-font-info">{% trans 'Contáctenos' %}</a>
+        </div>
+        {% endcomment %}
+    </div>
+</div>

@@ -1,0 +1,32 @@
+{% load i18n static %}
+{#<header id="m_header" class="m-grid__item m-header " m-minimize-offset="200" m-minimize-mobile-offset="200" style="height: 80px;">#}
+{#    <div class="m-container m-container--fluid m-container--full-height">#}
+{#        <div class="m-stack m-stack--ver m-stack--desktop">#}
+{##}
+{#            <!-- BEGIN: Brand -->#}
+{#            {% block brand %}#}
+{#                {% include 'frontend/dashboard/brand.html' %}#}
+{#            {% endblock %}#}
+{#            <!-- END: Brand -->#}
+{##}
+{##}
+{#            <div class="m-stack__item m-stack__item--fluid m-header-head" id="m_header_nav">#}
+{#                {% include 'frontend/dashboard/top_left_header.html' %}#}
+{#                {% include 'frontend/dashboard/top_right_header.html' %}#}
+{#            </div>#}
+{#        </div>#}
+{#    </div>#}
+{#</header>#}
+
+
+<div id="kt_header" class="kt-header kt-grid kt-grid--ver  kt-header--fixed ">
+
+    <!-- begin: Header Menu -->
+    {% include 'dashboard/header/top_left_header.html' %}
+    <!-- end: Header Menu -->
+
+    <!-- begin:: Header Topbar -->
+    {% include 'dashboard/header/top_right_header.html' %}
+
+    <!-- end:: Header Topbar -->
+</div>

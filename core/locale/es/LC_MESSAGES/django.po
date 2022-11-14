@@ -1,0 +1,164 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2022-08-26 12:29-0400\n"
+"PO-Revision-Date: 2022-08-26 12:58-0529\n"
+"Last-Translator: Sumat Admin <sumat@nauta.cu>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Translated-Using: django-rosetta 0.9.8\n"
+
+#: filters.py:6
+msgid "No"
+msgstr "No"
+
+#: filters.py:7
+msgid "Yes"
+msgstr "Si"
+
+#: filters.py:12 templates/dashboard/navbar.html:19
+#: templates/dashboard/navbar.html:25
+msgid "Search"
+msgstr "Buscar"
+
+#: templates/dashboard/breadcrum.html:7 views.py:17
+msgid "Administration Panel"
+msgstr "Administrar Panel"
+
+#: templates/dashboard/breadcrum.html:13
+#: templates/dashboard/header/top_header_user_profile.html:58
+#: templates/dashboard/header/top_left_header.html:7
+#: templates/dashboard/subheader.html:11
+msgid "Panel"
+msgstr "Panel"
+
+#: templates/dashboard/breadcrum.html:14
+msgid "Summary"
+msgstr "Resumen"
+
+#: templates/dashboard/dashboard.html:9
+msgid "Dashboard"
+msgstr "Panel"
+
+#: templates/dashboard/footer.html:5
+msgid "developed by"
+msgstr "desarrollado por"
+
+#: templates/dashboard/header/language_bar.html:300
+msgid "English"
+msgstr "Ingles"
+
+#: templates/dashboard/header/language_bar.html:412
+msgid "Espa&ntilde;ol"
+msgstr "Españñol"
+
+#: templates/dashboard/header/top_header_user_profile.html:16
+msgid "Welcome"
+msgstr "Bienvenido"
+
+#: templates/dashboard/header/top_header_user_profile.html:61
+msgid "System Administrations"
+msgstr "Administración del Sistema"
+
+#: templates/dashboard/header/top_header_user_profile.html:85
+#: templates/dashboard/navbar.html:139
+msgid "Exit"
+msgstr "Salir"
+
+#: templates/dashboard/invoice.html:105
+#: templates/dashboard/portlet_form_header_tools.html:33
+#: templates/dashboard/subheader.html:38
+msgid "Back"
+msgstr "Átras"
+
+#: templates/dashboard/menu.html:2
+msgid "CMS"
+msgstr ""
+
+#: templates/dashboard/menu.html:6
+msgid "Blog"
+msgstr ""
+
+#: templates/dashboard/menu.html:14
+msgid "Artículos"
+msgstr ""
+
+#: templates/dashboard/menu.html:20
+msgid "Categorías"
+msgstr ""
+
+#: templates/dashboard/menu.html:26
+msgid "Tags"
+msgstr ""
+
+#: templates/dashboard/menu.html:32
+msgid "Comentarios"
+msgstr ""
+
+#: templates/dashboard/navbar.html:10
+msgid "Home"
+msgstr "Home"
+
+#: templates/dashboard/navbar.html:132
+msgid "Full Screen"
+msgstr "Pantalla Completa"
+
+#: templates/dashboard/portlet_form_header_tools.html:41
+msgid "Save"
+msgstr "Guardar"
+
+#: templates/dashboard/table.html:23
+msgid "Add new item"
+msgstr "Agregar nuevo elemento"
+
+#: templates/dashboard/table.html:26
+msgid "Add New"
+msgstr "Agregar Nuevo"
+
+#: templates/dashboard/table.html:48
+msgid "Yes, remove selected"
+msgstr "Si, eliminar seleccionados"
+
+#: templates/dashboard/table.html:51
+msgid "Delete"
+msgstr "Eliminar"
+
+#: templates/dashboard/table.html:76
+#, python-format
+msgid " No found %(title)s."
+msgstr "No se encontraron %(title)s."
+
+#: templates/dashboard/wizard.html:21
+msgid "Go Back"
+msgstr "Ir átras"
+
+#: templates/dashboard/wizard.html:27
+msgid "Change Language"
+msgstr "Cambiar Idioma"
+
+#: templates/dashboard/wizard.html:940
+msgid "Previous"
+msgstr "Anterior"
+
+#: templates/dashboard/wizard.html:944
+msgid "Submit"
+msgstr "Enviar"
+
+#: templates/dashboard/wizard.html:948
+msgid "Next Step"
+msgstr "Siguiente"
+
+#: views.py:72
+msgid "No {} selected"
+msgstr "No {} seleccionado"

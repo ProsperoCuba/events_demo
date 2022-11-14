@@ -1,0 +1,11 @@
+{% load i18n %}
+{% blocktrans with model=model%} {{ model }} updated successfully.{% endblocktrans %}
+
+
+{% comment %}
+{% if gender == "F" %}
+    {{ model }} actualizada satisfactoriamente.
+{% else %}
+    {{ model }} actualizado satisfactoriamente.
+{% endif %}
+{% endcomment %}

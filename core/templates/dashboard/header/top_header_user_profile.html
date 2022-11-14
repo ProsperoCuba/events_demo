@@ -1,0 +1,91 @@
+{% load i18n static %}
+<style>
+    div.scroll {
+        display: block;
+        border: 0px solid red;
+        padding: 5px;
+        margin-top: 5px;
+        width: 100%;
+        height: 280px;
+        overflow-y: scroll;
+    }
+</style>
+
+<div class="kt-header__topbar-item kt-header__topbar-item--user">
+    <div class="kt-header__topbar-wrapper" data-toggle="dropdown" data-offset="10px,0px" aria-expanded="false">
+        <span class="kt-header__topbar-welcome kt-hidden-mobile">{% trans "Welcome" %},</span>
+        <span class="kt-header__topbar-username kt-hidden-mobile kt-font-info">{{ request.user.display_name }}</span>
+
+        <img class="kt-hidden--" alt="{{ request.user }}" src="{{ request.user.get_avatar_url }}">
+    </div>
+
+    <div class="dropdown-menu dropdown-menu-fit dropdown-menu-right dropdown-menu-anim dropdown-menu-xl">
+
+        <!--begin: Head -->
+        <div class="kt-user-card kt-user-card--skin-light kt-notification-item-padding-x" style="background-image: url('{% static "theme/media/misc/bg-1.jpg" %}');">
+            <div class="kt-user-card__avatar">
+
+                {% if request.user.avatar %}
+                    <img class="kt-hidden-" alt="Pic" src="{{ request.user.get_avatar_url }}"/>
+
+                {% else %}
+                    <!--use below badge element instead the user avatar to display username's first letter(remove kt-hidden class to display it) -->
+                    <span class="kt-badge kt-badge--username kt-badge--info kt-badge--lg kt-badge--rounded kt-badge--bold">{{ request.user.initials_name }}</span>
+
+                {% endif %}
+
+            </div>
+            <div class="kt-user-card__name text-white" style="word-break: break-word">
+                {{ request.user.get_full_name_or_email }}
+            </div>
+            <div class="kt-user-card__badge">
+                <span class="btn btn-label-primary btn-sm btn-bold btn-font-md kt-hidden">23 messages</span>
+            </div>
+        </div>
+
+        <!--end: Head -->
+
+        <!--begin: Navigation -->
+        <div class="kt-notification">
+<!--            <div class="kt-scroll ps ps&#45;&#45;active-y" data-scroll="true" style="height: 280px; overflow: hidden;">-->
+            <div class="scroll kt-scroll ps ps--active-y" data-scroll="true">
+                <a href="{% url 'dashboard' %}" class="kt-notification__item">
+                    <div class="kt-notification__item-icon">
+                        <i class="flaticon2-dashboard kt-font-warning"></i>
+                    </div>
+                    <div class="kt-notification__item-details">
+                        <div class="kt-notification__item-title kt-font-bold">
+                            {% trans 'Panel' %}
+                        </div>
+                        <div class="kt-notification__item-time">
+                            {% trans 'System Administrations' %}
+                        </div>
+                    </div>
+                </a>
+                {% comment %}
+                <a href="request.user.get_absolute_url" class="kt-notification__item">
+                    <div class="kt-notification__item-icon">
+                        <i class="flaticon2-calendar-3 kt-font-success"></i>
+                    </div>
+                    <div class="kt-notification__item-details">
+                        <div class="kt-notification__item-title kt-font-bold">
+                            {% trans 'Profile' %}
+                        </div>
+                        <div class="kt-notification__item-time">
+                            {% trans 'Account setup and more' %}
+                        </div>
+                    </div>
+                </a>
+                {% endcomment %}
+
+            </div>
+
+            <div class="kt-notification__custom kt-space-between">
+                <a href="{% url 'account_logout' %}" class="btn btn-sm btn-label-danger btn-bold">{% trans 'Exit' %}</a>
+            </div>
+
+        </div>
+
+        <!--end: Navigation -->
+    </div>
+</div>

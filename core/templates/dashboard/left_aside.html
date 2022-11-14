@@ -1,0 +1,86 @@
+{% load static menu_generator i18n %}
+
+<button class="kt-aside-close " id="kt_aside_close_btn"><i class="la la-close"></i></button>
+<div class="kt-aside  kt-aside--fixed  kt-grid__item kt-grid kt-grid--desktop kt-grid--hor-desktop" id="kt_aside">
+
+    <!-- begin:: Brand -->
+    <div class="kt-aside__brand kt-grid__item" id="kt_aside_brand">
+        <div class="kt-aside__brand-logo">
+            <a href="{% url 'dashboard' %}">
+                <img style="width: 40px;padding-left: 6px;" alt="Logo" src="{% static 'img/logo.png' %}"/>
+            </a>
+        </div>
+    </div>
+
+    <!-- end:: Brand -->
+
+    <!-- begin:: Aside Menu -->
+    <div class="kt-aside-menu-wrapper kt-grid__item kt-grid__item--fluid" id="kt_aside_menu_wrapper">
+        {#<div class="kt-scroll ps ps--active-y" data-scroll="true" style="max-height: 95vh; overflow: hidden;">#}
+        <div id="kt_aside_menu" class="kt-aside-menu  kt-aside-menu--dropdown " data-ktmenu-vertical="1"
+             data-ktmenu-dropdown="1" data-ktmenu-scroll="0">
+
+            {% get_menu "NAV_MENU_LEFT" as left_menu %}
+            <ul class="kt-menu__nav ">
+
+                {% for item in left_menu %}
+
+                    <li class="kt-menu__item {% if item.selected %}kt-menu__item--active{% endif %}
+                        {% if item.hidden %}kt-hidden{% endif %}
+                        {% if item.submenu %}kt-menu__item--submenu kt-menu__item--submenu-fullheight{% endif %}"
+                        {% if item.submenu %}data-ktmenu-submenu-toggle="hover"{% endif %}
+                        aria-haspopup="true" data-ktmenu-submenu-toggle="click"
+                        data-ktmenu-dropdown-toggle-class="kt-aside-menu-overlay--on">
+
+                        <a href="{% if item.submenu %}javascript:;{% else %} {{ item.url }} {% endif %}"
+                           class="kt-menu__link {% if item.pulse %}kt-pulse kt-pulse--brand {% endif %}{% if item.submenu %}kt-menu__toggle {% endif %}">
+
+                            <i class="kt-menu__link-icon {{ item.icon_class }}"></i>
+                            {% if item.pulse %}
+                                <span class="kt-pulse__ring"></span>
+                            {% endif %}
+                            <span class="kt-menu__link-text">{{ item.name }}</span>
+
+                            {% if item.submenu %}
+                            <i class="kt-menu__ver-arrow la la-angle-right"></i>
+                            {% endif %}
+                        </a>
+                        {% if item.submenu %}
+                            <div class="kt-menu__submenu ">
+                                <span class="kt-menu__arrow"></span>
+                                <div class="kt-menu__wrapper">
+                                    <ul class="kt-menu__subnav">
+                                        <li class="kt-menu__item  kt-menu__item--parent kt-menu__item--submenu-fullheight"
+                                            aria-haspopup="true"><span class="kt-menu__link"><span
+                                                class="kt-menu__link-text">{{ item.name }}</span></span>
+                                        </li>
+
+
+                                        {% for menu in item.submenu %}
+                                            <li class="kt-menu__item {% if menu.selected %}kt-menu__item--active{% endif %} {% if menu.hidden %}kt-hidden{% endif %}"
+                                                aria-haspopup="true">
+                                                <a href="{{ menu.url }}" class="kt-menu__link "><span
+                                                        class="kt-menu__link-text">{{ menu.name }}</span>
+                                                </a>
+                                            </li>
+
+                                        {% endfor %}
+
+                                    </ul>
+                                </div>
+                            </div>
+                        {% endif %}
+
+                    </li>
+
+                {% endfor %}
+
+            </ul>
+
+          </div>
+        {#</div>#}
+    </div>
+
+    <!-- end:: Aside Menu -->
+</div>
+<div class="kt-aside-menu-overlay"></div>

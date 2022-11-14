@@ -1,0 +1,59 @@
+{% extends "base.html" %}
+{% load i18n %}
+{% block title %}ERROR | {{error_number}}{% endblock %}
+
+{% block seo_meta_header %}
+{% include "meta/meta_header.html" with error_page=True %}
+{% endblock %}
+
+{% block main_body %}
+    <body class="hold-transition login-page">
+        <div class="wrapper">
+            <!-- Main content -->
+            <section class="login-box" style="position: relative; top: 20%;">
+              <div class="error-page">
+                <h2 class="headline text-{% if error_number == 404 %}warning{% else %}danger{% endif %}"> {{ error_number }}</h2>
+
+                <div class="error-content">
+                  <h3><i class="fas fa-exclamation-triangle text-{% if error_number == 404 %}warning{% else %}danger{% endif %}"></i>
+                  {% if error_number == 404 %}
+                          {% trans "Resource not found!" %}
+                      {% elif error_number == 403 %}
+                          {% trans "Unauthorized access!" %}
+                      {% elif error_number == 500 %}
+                          {% trans "Server error!" %}
+                      {% else %}
+                          {% trans "Unexpected error!" %}
+                      {% endif %}
+                  </h3>
+
+                  <p>
+                      {% if error_number == 404 %}
+                          {% trans "Sorry, we couldn't find the page you are looking for." %}
+                      {% elif error_number == 403 %}
+                          {% trans "Sorry, you do not have permissions to access this resource." %}
+                      {% elif error_number == 500 %}
+                          {% trans "Sorry, a server error has occurred, we are working on the solution." %}
+                      {% else %}
+                          {% trans "Sorry, an unexpected error has occurred, we are working on the solution." %}
+                      {% endif %}
+
+                      {% trans "meanwhile you can" %} <a href="{% url "dashboard" %}">{% trans "back to dashboard" %}</a>
+                      {% trans "ó" %} <a href="javascript:;" {% if request.GET.redirected %}
+                                       onclick="window.location.href = document.referrer;" {% else %}
+                                       onclick="window.history.go(-1); return false;"
+                                       {% endif %}>
+                                       {% trans "return" %}
+                                    </a> {% trans "where were you working" %}.
+                  </p>
+                </div>
+                <!-- /.error-content -->
+              </div>
+            </section>
+            <!-- /.content -->
+        </div>
+
+    {% include "meta/meta_footer.html" with error_page=True %}
+    {% include "mandatory_js.html" %}
+    </body>
+{% endblock %}

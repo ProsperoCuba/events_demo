@@ -1,0 +1,91 @@
+{% load i18n widget_tweaks static tz django_tables2 %}
+<div class="kt-grid kt-grid--desktop kt-grid--ver kt-grid--ver-desktop kt-app">
+
+    <!--begin::Portlet-->
+    <div class="kt-grid__item kt-grid__item--fluid">
+        <div class="row">
+            <div class="col-md-12">
+                {% block filter %}
+
+                {% endblock %}
+                <div class="kt-portlet ">
+                    <div class="kt-portlet__head kt-portlet__head--noborder">
+                        <div class="kt-portlet__head-label">
+                            <h3 class="kt-portlet__head-title">
+                                {#                                {{ title }}#}
+                            </h3>
+                        </div>
+                        <div class="kt-portlet__head-toolbar">
+                            <div class="kt-portlet__head-actions">
+                                {% block add_new %}
+                                    {% if add_perm %}
+                                        <div class="dropdown dropdown-inline" data-toggle="kt-tooltip"
+                                             title="{% if not add_title %}{% trans 'Add new item' %} {% endif %}{{ add_title }}"
+                                             data-placement="left">
+                                            <a href="{{ add_url }}" class="btn btn-sm btn-label-brand btn-bold">
+                                                <i class="flaticon2-plus"></i> {% if not add_text %}{% trans 'Add New' %}{% endif %}{{ add_text }}
+                                            </a>
+                                        </div>
+
+                                    {% endif %}
+
+                                {% endblock %}
+                                {% block bulk_action %}
+                                    {% if object_list %}
+                                        <div class="dropdown dropdown-inline">
+                                            <form id="actions-form" method="POST">{% csrf_token %}</form>
+                                            <a id="actions_dropdown" href="#"
+                                               class="btn btn-clean btn-sm btn-icon btn-icon-md" data-toggle="dropdown"
+                                               aria-haspopup="true" aria-expanded="false">
+                                                <i class="flaticon-more-1"></i>
+                                            </a>
+                                            <div class="dropdown-menu dropdown-menu-right">
+                                                <ul class="kt-nav">
+                                                    {% block bulk_action_items %}
+                                                        <li class="kt-nav__item">
+                                                            <a href="{{ bulk_delete_url }}"
+                                                               class="kt-nav__link apply-bulk-action"
+                                                               data-confirm_text="{% trans 'Yes, remove selected' %}"
+                                                            >
+                                                                <i class="kt-nav__link-icon la la-trash"></i>
+                                                                <span class="kt-nav__link-text">{% trans 'Delete' %}</span>
+                                                            </a>
+                                                        </li>
+                                                    {% endblock %}
+
+
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    {% endif %}
+
+                                {% endblock %}
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="kt-portlet__body kt-portlet__body--fit-y kt-margin-b-40">
+                        {% if object_list %}
+                            <div class="kt-section">
+                                <div class="kt-section__content table-responsive">
+                                    {% render_table table %}
+                                </div>
+                            </div>
+                        {% else %}
+                            <h1 class="kt-grid__item kt-grid__item--middle kt-align-center">
+                                {% blocktrans with title=title %} No found {{ title }}.{% endblocktrans %}
+                            </h1>
+                        {% endif %}
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                {% comment %}PAGINATION{% endcomment %}
+                {% include 'widgets/django-tables2.html' %}
+            </div>
+        </div>
+    </div>
+</div>

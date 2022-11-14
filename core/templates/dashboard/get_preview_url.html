@@ -1,0 +1,11 @@
+<script type="text/javascript">
+    $(document).ready(function () {
+        let session_filter = "{{sessionFilter}}";
+        let url = sessionStorage.getItem(session_filter, false);
+        if (url || url != ""){
+            let re = /amp;/gi;
+            url = url.replace(re, "");
+            $('#id_preview_url').val(url);
+        }
+    });
+</script>

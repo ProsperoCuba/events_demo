@@ -1,0 +1,44 @@
+{% load i18n %}
+<div class="kt-subheader   kt-grid__item" id="kt_subheader">
+    <div class="kt-container  kt-container--fluid ">
+        <div class="kt-subheader__main">
+            <h3 class="kt-subheader__title">
+                {% if side_toggle %}
+                    <button class="kt-subheader__mobile-toggle kt-subheader__mobile-toggle--left" id="kt_subheader_mobile_toggle"><span></span></button>
+
+                {% endif %}
+                {% block subheader_title %}
+                    {% trans 'Panel' %}
+                {% endblock %}
+            </h3>
+            <span class="kt-subheader__separator kt-hidden"></span>
+            <div class="kt-subheader__breadcrumbs">
+                {% block subheader_links %}
+
+                <a href="{% url 'dashboard' %}" class="kt-subheader__breadcrumbs-home"><i class="flaticon2-shelter"></i></a>
+                    <span class="kt-subheader__breadcrumbs-separator"></span>
+
+                {% endblock %}
+                {% block subheader_active %}
+                    <span class="kt-subheader__breadcrumbs-link kt-subheader__breadcrumbs-link--active">
+                            {% if subheader_title %}
+                                {{ subheader_title }}
+                            {% else %}
+                                {{title}}
+                            {% endif %}
+                        </span>
+                {% endblock %}
+            </div>
+        </div>
+        <div class="kt-subheader__toolbar">
+            <div class="kt-subheader__wrapper">
+                {% block subheader_tools %}
+                    <a href="{{ request.META.HTTP_REFERER }}" class="btn btn-clean kt-margin-r-10">
+                        <i class="la la-arrow-left"></i>
+                        <span class="kt-hidden-mobile">{% trans "Back" %}</span>
+                    </a>
+                {% endblock %}
+            </div>
+        </div>
+    </div>
+</div>
